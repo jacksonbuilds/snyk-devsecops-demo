@@ -1,35 +1,35 @@
-name: Snyk Security Scan
+name: Snyk Analysis
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  security:
+  snyk:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Node.js (required for Snyk)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: pip install -r app/requirements.txt
+      - name: Install Snyk CLI
+        run: npm install -g snyk
 
-    - name: Install Snyk CLI
-      run: |
-        curl -sL https://snyk.io/install | bash
-        echo "$HOME/.snyk" >> $GITHUB_PATH
+      - name: Authenticate with Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
-    - name: Auth Snyk
-      run: snyk auth ${{ secrets.SNYK_TOKEN }}
+      - name: Test Python dependencies
+        run: snyk test --file=app/requirements.txt --package-manager=pip
 
-    - name: Snyk test (Python)
-      run: snyk test --file=app/requirements.txt --command=python3
+      - name: Build Docker image
+        run: docker build -t snyk-test-app ./app
 
-    - name: Snyk test (Docker)
-      run: |
-        docker build -t snyk-test-app ./app
-        snyk test --docker snyk-test-app
+      - name: Test Docker image for vulnerabilities
+        run: snyk test --docker snyk-test-app
