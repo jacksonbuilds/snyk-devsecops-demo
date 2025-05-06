@@ -1,0 +1,17 @@
+- hosts: localhost
+  become: false
+  tasks:
+    - name: Pull Docker image for app
+      community.docker.docker_image:
+        name: flaskapp
+        source: build
+        build:
+          path: ../app
+
+    - name: Run Flask app container
+      community.docker.docker_container:
+        name: flask_snyk_demo
+        image: flaskapp
+        state: started
+        ports:
+          - "5000:5000"
