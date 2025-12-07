@@ -90,15 +90,6 @@ Config Management	Ansible (optional use case)
 Scripting & APIs	Python, Bash
 ```
 
-What This Demonstrates
-```
-✔️ DevSecOps pipeline design
-✔️ Snyk integration with local and CI workflows
-✔️ Container image scanning
-✔️ GitHub Actions security automation
-✔️ Secure coding & vulnerability awareness
-```
-
 Sample Output
 ```
 ✗ Medium severity vulnerability found in requests@2.19.1
