@@ -1,16 +1,16 @@
-# 🛡️ DevSecOps Demo: Snyk Integration with Python, Docker & GitHub Actions
+# DevSecOps Demo: Snyk Integration with Python, Docker & GitHub Actions
 
 This project demonstrates how to integrate [Snyk](https://snyk.io/) into a modern DevSecOps pipeline for detecting vulnerabilities in both **application dependencies** and **Docker containers**. It showcases real-world security automation practices using:
 
-- ✅ Snyk CLI for local and CI-based vulnerability scanning
-- 🐳 Docker for containerization
-- 🐍 Flask-based Python application (intentionally vulnerable)
-- ⚙️ GitHub Actions for continuous security testing
-- ⚡ Ansible (optional) for infrastructure automation
+- Snyk CLI for local and CI-based vulnerability scanning
+- Docker for containerization
+- Flask-based Python application (intentionally vulnerable)
+- GitHub Actions for continuous security testing
+- Ansible (optional) for infrastructure automation
 
 ---
 
-## 🚀 Project Objectives
+## Project Objectives
 
 - Integrate **Snyk CLI** with a Python/Docker project
 - Automate security scans in a **CI/CD pipeline**
@@ -19,7 +19,7 @@ This project demonstrates how to integrate [Snyk](https://snyk.io/) into a moder
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 snyk-devsecops-demo/
@@ -44,8 +44,8 @@ snyk-devsecops-demo/
 └── README.md
 ```
 
-🧪 Vulnerability Scanning with Snyk CLI
-▶️ Run Locally
+Vulnerability Scanning with Snyk CLI
+Run Locally
 ```
 Scan Python Dependencies
 snyk test --file=app/requirements.txt --command=python3
@@ -55,7 +55,7 @@ docker build -t snyk-test-app ./app
 snyk test --docker snyk-test-app
 ```
 
-⚙️ GitHub Actions Integration
+GitHub Actions Integration
 
 On every commit or pull request, the GitHub Actions workflow:
 
@@ -67,7 +67,7 @@ On every commit or pull request, the GitHub Actions workflow:
 
     Scans both dependencies and the Docker image
 
-🔐 Setting Up Snyk
+Setting Up Snyk
 
     Create a free Snyk account
 
@@ -79,7 +79,7 @@ On every commit or pull request, the GitHub Actions workflow:
 
         Add a secret: SNYK_TOKEN
 
-🛠️ Technologies Used
+Technologies Used
 ```
 Category	Tools & Frameworks
 Programming	Python, Flask
@@ -90,7 +90,7 @@ Config Management	Ansible (optional use case)
 Scripting & APIs	Python, Bash
 ```
 
-✅ What This Demonstrates
+What This Demonstrates
 ```
 ✔️ DevSecOps pipeline design
 ✔️ Snyk integration with local and CI workflows
@@ -99,7 +99,7 @@ Scripting & APIs	Python, Bash
 ✔️ Secure coding & vulnerability awareness
 ```
 
-📷 Sample Output
+Sample Output
 ```
 ✗ Medium severity vulnerability found in requests@2.19.1
   Description: Arbitrary Code Execution
